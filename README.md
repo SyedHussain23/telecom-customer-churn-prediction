@@ -1,158 +1,186 @@
 # 📞 telecom-customer-churn-prediction
 
-## 📌 Project Overview
-
-Customer churn is a major challenge in the telecom industry due to intense competition and customer switching behavior.
-This project builds a **machine learning solution** to predict churn risk and provide actionable insights for retention strategies.
-
-The business objective is to:
-
-✅ Identify customers likely to churn
-✅ Generate churn probability scores
-✅ Segment customers into risk groups
-✅ Discover key churn drivers for business action
-
-This aligns with the No-Churn Telecom business case where ML is used to understand churn variables and create predictive churn flags for retention campaigns. 
+A machine learning project to identify customers likely to churn, generate churn risk scores, and provide actionable business insights for proactive retention strategies.
 
 ---
 
-## 🎯 Business Goals
+## 🎯 Project Objectives
 
-* Understand variables influencing customer migration
-* Create **CHURN_FLAG (0/1)** prediction
-* Provide churn risk scores for targeted campaigns
-* Support proactive customer retention
+* Identify customers at risk of churn
+* Generate churn probability scores
+* Segment customers into risk groups
+* Understand key drivers of churn
+* Provide business recommendations for retention
 
 ---
 
 ## 📊 Dataset
 
-The dataset was loaded directly from a **SQL database** containing telecom customer usage and service information including:
+The dataset is loaded from a telecom SQL database and contains customer usage patterns, plan details, service interactions, and churn labels.
 
-* Customer demographics
-* Plan subscriptions
-* Usage metrics (minutes, calls, charges)
-* Customer service interactions
-* Churn label
+**Key Features**
+
+* Call minutes & charges (Day, Evening, Night, International)
+* Customer service calls
+* Voicemail & international plans
+* Account length & usage behavior
+* Target variable: **CHURN_FLAG**
 
 ---
 
-## ⚙️ Project Workflow
+## ⚙️ Tech Stack
 
-### 1️⃣ Data Loading
+* Python
+* Pandas, NumPy
+* Scikit-learn
+* Seaborn, Matplotlib
+* PyMySQL
+* Jupyter Notebook
 
-* Connected to SQL database using PyMySQL
-* Extracted telecom churn dataset
+---
 
-### 2️⃣ Data Cleaning
+## 🔎 Project Workflow
 
-* Standardized churn column formats
-* Created **CHURN_FLAG**
-* Converted numeric columns
-* Median imputation for missing values
+### ✅ Data Collection
 
-### 3️⃣ Feature Engineering
+* Loaded telecom customer data from SQL database
 
-* Numeric vs categorical separation
-* One-hot encoding
-* Standard scaling
+### ✅ Data Cleaning
 
-### 4️⃣ Model Building
+* Standardized churn labels
+* Converted object columns to numeric
+* Handled missing values with median imputation
+
+### ✅ Feature Engineering
+
+* Created binary churn flag
+* One-hot encoded categorical variables
+* Scaled numerical features
+
+### ✅ Modeling
 
 Two models were trained:
 
-✅ Logistic Regression (baseline)
-✅ Random Forest (final model)
+* Logistic Regression (baseline)
+* Random Forest (final model)
 
-### 5️⃣ Model Evaluation
+### ✅ Evaluation
 
 Metrics used:
 
 * Accuracy
 * Precision
 * Recall
-* F1-score
+* F1 Score
 * ROC-AUC
-* Confusion Matrix
 
 ---
 
-## 🏆 Model Performance
+## ⭐ Model Results
 
-### 🔹 Logistic Regression
+### Logistic Regression
 
 * Accuracy: **86%**
 * Recall (churn): **23%**
 * ROC-AUC: **0.79**
 
-👉 Missed many churners
-
----
-
-### 🔹 Random Forest (Final Model)
+### Random Forest (Final Model)
 
 * Accuracy: **94%**
 * Recall (churn): **60%**
-* F1-score: **73%**
 * ROC-AUC: **0.89**
 
-👉 Strong churn detection and overall performance
+👉 Random Forest selected as best model.
 
 ---
 
-## ⭐ Key Churn Drivers
+## 🔥 Key Churn Drivers
 
-Random Forest feature importance revealed:
+Top predictors identified:
 
-1️⃣ Customer Service Calls
-2️⃣ Day Minutes & Charges
-3️⃣ International Plan
-4️⃣ Evening Usage
-5️⃣ International Charges
-
-👉 Service issues and usage cost are primary churn factors
+1. Customer Service Calls
+2. Day Minutes & Charges
+3. International Plan
+4. Evening Minutes & Charges
+5. International Usage
 
 ---
 
-## 📊 Churn Risk Segmentation
+## 🎯 Customer Risk Segmentation
 
-Customers were segmented using predicted probabilities:
+Customers classified into:
 
-* 🔴 High Risk (≥ 0.7)
-* 🟡 Medium Risk (0.4–0.7)
-* 🟢 Low Risk (< 0.4)
-
-This enables targeted retention strategies.
+* **High Risk** → churn score ≥ 0.70
+* **Medium Risk** → churn score 0.40–0.69
+* **Low Risk** → churn score < 0.40
 
 ---
 
 ## 💼 Business Recommendations
 
-* Improve support for customers with frequent service calls
-* Optimize pricing for high usage customers
-* Re-evaluate international plan value
-* Use churn scores for proactive retention campaigns
+* Improve customer support for high call-frequency customers
+* Optimize pricing for heavy usage customers
+* Reevaluate international plan offerings
+* Implement proactive retention campaigns using churn scores
+* Use segmentation for targeted marketing
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 How to Run
 
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* PyMySQL
-* Matplotlib, Seaborn
-* SQL Database
+```bash
+# Clone repository
+git clone https://github.com/SyedHussain23/telecom-customer-churn-prediction.git
+
+# Navigate to project folder
+cd telecom-customer-churn-prediction
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run notebook
+jupyter notebook telecom-customer-churn-prediction.ipynb
+```
 
 ---
 
-## 🚀 Future Improvements
+## ⚠️ Database Setup
+
+Update SQL credentials before running:
+
+```python
+HOST = "your_host"
+USER = "your_user"
+PASSWORD = "your_password"
+DB_NAME = "your_database"
+```
+
+👉 For security, store credentials using `.env` file.
+
+---
+
+## 📂 Project Output
+
+The project generates:
+
+* Churn predictions
+* Churn probability scores
+* Risk segmentation
+* Business-ready dataset
+
+```
+telecom_churn_predictions.csv
+```
+
+---
+
+## 🔮 Future Improvements
 
 * Hyperparameter tuning
-* Gradient boosting / XGBoost
+* Advanced ensemble models (XGBoost, LightGBM)
 * Deep learning churn modeling
 * Real-time churn prediction pipeline
-* Customer lifetime value integration
+* Deployment via API or dashboard
 
 ---
 
@@ -161,8 +189,10 @@ This enables targeted retention strategies.
 **Syed Hussain Abdul Hakeem**
 
 🔗 GitHub: [https://github.com/SyedHussain23](https://github.com/SyedHussain23)
-🔗 LinkedIn: [https://linkedin.com/in/syed-hussain-abdul-hakeem](https://linkedin.com/in/syed-hussain-abdul-hakeem)
+🔗 LinkedIn: [https://www.linkedin.com/in/syedhussain23](https://www.linkedin.com/in/syedhussain23)
 
 ---
 
-⭐ If you found this project useful, please consider giving it a **star** on GitHub!
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
