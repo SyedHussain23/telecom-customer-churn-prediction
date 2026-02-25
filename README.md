@@ -190,7 +190,7 @@ telecom_churn_predictions.csv
 
 🔗 GitHub: [https://github.com/SyedHussain23](https://github.com/SyedHussain23)
 
-🔗 LinkedIn: (https://www.linkedin.com/in/syed-hussain-abdul-hakeem)
+🔗 LinkedIn: https://www.linkedin.com/in/syed-hussain-abdul-hakeem
 
 ---
 
